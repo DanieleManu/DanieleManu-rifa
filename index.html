@@ -146,12 +146,52 @@
     }
 
     .pix{
-      margin-top:30px;
-      text-align:center;
-      font-size:24px;
-      font-weight:bold;
-      color:#4d2c13;
-    }
+  margin-top:30px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  color:#4d2c13;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  border:2px solid #c9972b;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pagamentos{
+  text-align:center;
+  margin-top:30px;
+}
+
+.btn-pagamento{
+  display:block;
+  width:300px;
+  max-width:90%;
+  margin:10px auto;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#25d366;
+  color:white;
+}
+
+.dinheiro{
+  background:#4d2c13;
+}
+
+.valor-numero{
+  text-align:center;
+  margin-top:15px;
+  font-size:18px;
+  font-weight:bold;
+}
+    
 
 .premio{
   width:100%;
@@ -265,9 +305,19 @@
 
   </div>
 
-  <div class="pix">
-    PIX: 43984299837
-  </div>
+  <div class="pagamentos">
+
+  <h3>Formas de Pagamento</h3>
+
+  <div class="pagamentos">
+
+<button class="btn-pagamento" onclick="copiarPix()">
+  📱 Pagar via PIX 43984299837
+</button>
+
+<button class="btn-pagamento dinheiro" onclick="pagamentoDinheiro()">
+  💵 Pagamento em Dinheiro
+</button>
 
 </div>
 <script>
@@ -280,6 +330,7 @@ const numerosComprados = [
   "012",
   "015",
   "018",
+  "022",
   "023",
   "025",
   "026",
@@ -321,6 +372,7 @@ const compradores = {
    "012": "Vanderlei",
  "015": "Alessandro Amigo do Daniel",
  "018":"Adenilson Feitosa Da Silva",
+ "022":"Pamela Karoliny",
   "025": " Daia",
   "026": "Amarildo Donizeti Batista",
   "030": "Vanderlei",
@@ -412,6 +464,38 @@ for(let i = 1; i <= 450; i++){
   }
 
   grid.appendChild(div);
+
+}
+
+
+function copiarPix() {
+
+  const chavePix = "43984299837";
+
+  navigator.clipboard.writeText(chavePix)
+    .then(() => {
+      alert("✅ Chave PIX copiada: " + chavePix);
+    })
+    .catch(() => {
+      alert("Não foi possível copiar a chave PIX.");
+    });
+
+}
+
+function pagamentoDinheiro() {
+  alert("💵 Pagamento em dinheiro disponível. Entre em contato pelo WhatsApp para combinar a entrega do valor.");
+}
+
+
+function pagamentoDinheiro() {
+
+  const telefone = "5543984420862";
+  const mensagem = "Olá! Quero pagar a rifa em dinheiro.";
+
+  window.open(
+    `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`,
+    "_blank"
+  );
 
 }
 
